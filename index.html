@@ -2156,6 +2156,266 @@
     </div>
   </footer>
 
+  <!-- EXIT INTENT POPUP STYLES -->
+  <style>
+    #exit-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .75);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+      padding: 20px;
+    }
+
+    #exit-overlay.show {
+      display: flex;
+    }
+
+    #exit-popup {
+      background: linear-gradient(135deg, #0f1b33 0%, #1a2744 100%);
+      border: 1px solid rgba(212, 175, 55, .35);
+      border-radius: 28px;
+      padding: 40px 36px;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 0 80px rgba(212, 175, 55, .2), 0 8px 40px rgba(0, 0, 0, .6);
+      animation: popIn .4s cubic-bezier(.34, 1.56, .64, 1);
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(.85);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    #exit-close {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, .4);
+      font-size: 1.4rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: color .2s;
+    }
+
+    #exit-close:hover {
+      color: var(--white);
+    }
+
+    .ep-badge {
+      display: inline-block;
+      background: rgba(212, 175, 55, .12);
+      border: 1px solid rgba(212, 175, 55, .3);
+      color: var(--gold);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    #exit-popup h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      color: var(--white);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    #exit-popup p {
+      font-size: .88rem;
+      color: var(--g400);
+      margin-bottom: 24px;
+      line-height: 1.65;
+    }
+
+    /* SCRATCH CARD */
+    #scratch-wrap {
+      position: relative;
+      width: 260px;
+      height: 100px;
+      margin: 0 auto 20px;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: crosshair;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, .4);
+    }
+
+    #scratch-reveal {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #1a2744, #0d1628);
+      border: 1px solid rgba(212, 175, 55, .25);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    #scratch-reveal .coupon-code {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: .08em;
+    }
+
+    #scratch-reveal .coupon-sub {
+      font-size: .75rem;
+      color: var(--g400);
+    }
+
+    #scratch-canvas {
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      touch-action: none;
+    }
+
+    #scratch-hint {
+      font-size: .78rem;
+      color: var(--g400);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    #scratch-hint span {
+      font-size: 1rem;
+    }
+
+    #ep-cta {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
+    #ep-cta.show {
+      display: flex;
+    }
+
+    #ep-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold);
+      color: #000;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      box-shadow: 0 4px 24px rgba(212, 175, 55, .4);
+      transition: all .2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #ep-cta-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .35), transparent);
+      animation: shimmer 2s ease-in-out infinite;
+    }
+
+    #ep-cta-btn:hover {
+      background: var(--goldl);
+      transform: translateY(-2px);
+    }
+
+    .ep-price-line {
+      font-size: .82rem;
+      color: var(--g400);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ep-price-line .now {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .ep-price-line .was {
+      text-decoration: line-through;
+      color: var(--g600);
+    }
+
+    .ep-skip {
+      background: none;
+      border: none;
+      color: var(--g600);
+      font-size: .78rem;
+      cursor: pointer;
+      margin-top: 4px;
+      text-decoration: underline;
+      transition: color .2s;
+    }
+
+    .ep-skip:hover {
+      color: var(--g400);
+    }
+  </style>
+
+  <!-- EXIT INTENT POPUP HTML -->
+  <div id="exit-overlay">
+    <div id="exit-popup">
+      <button id="exit-close" aria-label="Close">×</button>
+      <div class="ep-badge">🎁 Wait — Special Offer</div>
+      <h2>Before You Go...<br>Scratch to Reveal Your Discount!</h2>
+      <p>You're one scratch away from a secret coupon. Use it to get your Mobile Number Report at a special price.</p>
+      <div id="scratch-hint"><span>👆</span> Scratch the card below</div>
+      <div id="scratch-wrap">
+        <div id="scratch-reveal">
+          <span class="coupon-code">LUCKY531</span>
+          <span class="coupon-sub">Use at checkout · Save ₹268</span>
+        </div>
+        <canvas id="scratch-canvas"></canvas>
+      </div>
+      <div id="ep-cta">
+        <div class="ep-price-line">
+          <span class="now">₹531</span>
+          <span class="was">₹799</span>
+          <span
+            style="background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.3);color:#10B981;font-size:.7rem;font-weight:700;padding:2px 10px;border-radius:100px;">SAVE
+            ₹268</span>
+        </div>
+        <a id="ep-cta-btn" href="https://www.healingbysurabhi.in/download" target="_blank">
+          Claim My ₹531 Report →
+        </a>
+        <p style="font-size:.72rem;color:var(--g600);margin:0;">Apply code <strong
+            style="color:var(--gold);">LUCKY531</strong> at checkout</p>
+      </div>
+      <button class="ep-skip" id="ep-skip">No thanks, I'll pay full price</button>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.min.js"></script>
   <script>
     const { animate, inView, stagger } = Motion;
@@ -2282,6 +2542,148 @@
       const b = document.querySelector('.btn-lg');
       if (b) animate(b, { scale: [1, 1.04, 1] }, { duration: 0.7, delay: 0.5, easing: 'ease-in-out' });
     });
+
+    // EXIT INTENT POPUP + SCRATCH CARD
+    (function () {
+      const overlay = document.getElementById('exit-overlay');
+      const closeBtn = document.getElementById('exit-close');
+      const skipBtn = document.getElementById('ep-skip');
+      const canvas = document.getElementById('scratch-canvas');
+      const ctx = canvas.getContext('2d');
+      const hint = document.getElementById('scratch-hint');
+      const epCta = document.getElementById('ep-cta');
+      let shown = false, scratched = false;
+
+      // Size canvas to match wrapper
+      function sizeCanvas() {
+        const wrap = document.getElementById('scratch-wrap');
+        canvas.width = wrap.offsetWidth;
+        canvas.height = wrap.offsetHeight;
+        drawScratchLayer();
+      }
+
+      function drawScratchLayer() {
+        // Gold foil scratch layer
+        const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        grad.addColorStop(0, '#C9A227');
+        grad.addColorStop(0.4, '#F0D060');
+        grad.addColorStop(0.7, '#D4AF37');
+        grad.addColorStop(1, '#A8892A');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Scratch texture dots
+        ctx.fillStyle = 'rgba(0,0,0,.08)';
+        for (let i = 0; i < 200; i++) {
+          ctx.beginPath();
+          ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Hint text on scratch layer
+        ctx.fillStyle = 'rgba(0,0,0,.5)';
+        ctx.font = 'bold 13px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('✦ SCRATCH HERE ✦', canvas.width / 2, canvas.height / 2);
+      }
+
+      function getPos(e) {
+        const r = canvas.getBoundingClientRect();
+        if (e.touches) return { x: e.touches[0].clientX - r.left, y: e.touches[0].clientY - r.top };
+        return { x: e.clientX - r.left, y: e.clientY - r.top };
+      }
+
+      function scratch(e) {
+        e.preventDefault();
+        const { x, y } = getPos(e);
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.beginPath();
+        ctx.arc(x, y, 22, 0, Math.PI * 2);
+        ctx.fill();
+        checkReveal();
+      }
+
+      function checkReveal() {
+        if (scratched) return;
+        const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+        let transparent = 0;
+        for (let i = 3; i < data.length; i += 4) if (data[i] < 128) transparent++;
+        const pct = transparent / (canvas.width * canvas.height);
+        if (pct > 0.45) {
+          scratched = true;
+          // Fully clear canvas to reveal coupon
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          hint.style.display = 'none';
+          epCta.classList.add('show');
+          // Confetti burst
+          confettiBurst();
+        }
+      }
+
+      // Simple confetti
+      function confettiBurst() {
+        const colors = ['#D4AF37', '#F0D060', '#10B981', '#6366f1', '#fff'];
+        const popup = document.getElementById('exit-popup');
+        for (let i = 0; i < 30; i++) {
+          const dot = document.createElement('div');
+          dot.style.cssText = `position:absolute;width:7px;height:7px;border-radius:50%;background:${colors[i % colors.length]};top:50%;left:50%;pointer-events:none;z-index:10;animation:cf .8s ease-out forwards;animation-delay:${i * 0.02}s;--tx:${(Math.random() - 0.5) * 260}px;--ty:${(Math.random() - 0.5) * 200}px;`;
+          popup.appendChild(dot);
+          setTimeout(() => dot.remove(), 1000);
+        }
+      }
+
+      // Inject confetti keyframe
+      const cfStyle = document.createElement('style');
+      cfStyle.textContent = `@keyframes cf{to{transform:translate(var(--tx),var(--ty));opacity:0}}`;
+      document.head.appendChild(cfStyle);
+
+      // Mouse events
+      let isDrawing = false;
+      canvas.addEventListener('mousedown', () => isDrawing = true);
+      canvas.addEventListener('mouseup', () => isDrawing = false);
+      canvas.addEventListener('mousemove', e => { if (isDrawing) scratch(e); });
+      canvas.addEventListener('touchstart', e => { isDrawing = true; scratch(e); }, { passive: false });
+      canvas.addEventListener('touchend', () => isDrawing = false);
+      canvas.addEventListener('touchmove', e => { if (isDrawing) scratch(e); }, { passive: false });
+
+      function showPopup() {
+        if (shown) return;
+        shown = true;
+        overlay.classList.add('show');
+        sizeCanvas();
+      }
+
+      function hidePopup() {
+        overlay.classList.remove('show');
+      }
+
+      closeBtn.addEventListener('click', hidePopup);
+      skipBtn.addEventListener('click', hidePopup);
+      overlay.addEventListener('click', e => { if (e.target === overlay) hidePopup(); });
+
+      // Exit intent: mouse leaves top of viewport
+      let exitTimer;
+      document.addEventListener('mouseleave', e => {
+        if (e.clientY <= 0 && !shown) {
+          exitTimer = setTimeout(showPopup, 200);
+        }
+      });
+      document.addEventListener('mouseenter', () => clearTimeout(exitTimer));
+
+      // Mobile fallback: show after 40s of inactivity or on back button
+      let mobileTimer = setTimeout(() => { if (!shown) showPopup(); }, 40000);
+      document.addEventListener('touchstart', () => {
+        clearTimeout(mobileTimer);
+        mobileTimer = setTimeout(() => { if (!shown) showPopup(); }, 40000);
+      }, { passive: true });
+
+      // Back button / popstate fallback
+      history.pushState(null, '', location.href);
+      window.addEventListener('popstate', () => {
+        if (!shown) { showPopup(); history.pushState(null, '', location.href); }
+      });
+    })();
   </script>
 </body>
 
