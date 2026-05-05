@@ -1917,48 +1917,199 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
+  <!-- TESTIMONIALS — Real WhatsApp Reviews -->
   <section id="testimonials">
     <div class="container">
       <div class="section-header">
         <span class="section-label">Real Results</span>
-        <h2>What People Say After <span class="text-gold">Their Report</span></h2>
-        <p>12,341+ reports delivered. These are the people who checked their number.</p>
+        <h2>Real Reviews from <span class="text-gold">Real Clients</span></h2>
+        <p>These are actual WhatsApp messages from people who got their Mobile Number Numerology Report.</p>
       </div>
-      <div class="t-grid">
-        <div class="tcard reveal">
-          <span class="tstars">★★★★★</span>
-          <p class="ttext">"I was about to change jobs thinking that was the problem. After Surabhi's report, I realised
-            my number was creating instability. The clarity I got was worth 10x the price. Now I understand WHY things
-            were happening."</p>
-          <div class="tauthor">
-            <div class="tav" style="background:linear-gradient(135deg,#D4AF37,#A8892A)">PM</div>
-            <div><span class="tname">Priya M.</span><span class="tloc">Pune, Maharashtra</span></div>
-          </div>
+
+      <!-- Scrolling marquee row 1 (left to right) -->
+      <div class="reviews-track-wrap reveal" style="overflow:hidden;margin-bottom:16px;">
+        <div class="reviews-track" id="track1">
+          <img src="review-1.jpeg" alt="Client review" class="review-img">
+          <img src="review-2.jpeg" alt="Client review" class="review-img">
+          <img src="review-3.jpeg" alt="Client review" class="review-img">
+          <img src="review-4.jpeg" alt="Client review" class="review-img">
+          <img src="review-5.jpeg" alt="Client review" class="review-img">
+          <img src="review-6.jpeg" alt="Client review" class="review-img">
+          <img src="review-7.jpeg" alt="Client review" class="review-img">
+          <img src="review-8.jpeg" alt="Client review" class="review-img">
+          <!-- Duplicate for seamless loop -->
+          <img src="review-1.jpeg" alt="Client review" class="review-img">
+          <img src="review-2.jpeg" alt="Client review" class="review-img">
+          <img src="review-3.jpeg" alt="Client review" class="review-img">
+          <img src="review-4.jpeg" alt="Client review" class="review-img">
+          <img src="review-5.jpeg" alt="Client review" class="review-img">
+          <img src="review-6.jpeg" alt="Client review" class="review-img">
+          <img src="review-7.jpeg" alt="Client review" class="review-img">
+          <img src="review-8.jpeg" alt="Client review" class="review-img">
         </div>
-        <div class="tcard reveal">
-          <span class="tstars">★★★★★</span>
-          <p class="ttext">"Honestly was skeptical. But the report was shockingly accurate about the patterns in my
-            life. The way she explained the energy of each digit made complete sense. Got my report within 20 hours on
-            WhatsApp."</p>
-          <div class="tauthor">
-            <div class="tav" style="background:linear-gradient(135deg,#6366f1,#4338ca)">RS</div>
-            <div><span class="tname">Rahul S.</span><span class="tloc">Bangalore, Karnataka</span></div>
-          </div>
+      </div>
+
+      <!-- Scrolling marquee row 2 (right to left) -->
+      <div class="reviews-track-wrap reveal" style="overflow:hidden;">
+        <div class="reviews-track reviews-track-rtl" id="track2">
+          <img src="review-9.jpeg" alt="Client review" class="review-img">
+          <img src="review-10.jpeg" alt="Client review" class="review-img">
+          <img src="review-11.jpeg" alt="Client review" class="review-img">
+          <img src="review-12.jpeg" alt="Client review" class="review-img">
+          <img src="review-13.jpeg" alt="Client review" class="review-img">
+          <img src="review-14.jpeg" alt="Client review" class="review-img">
+          <img src="review-15.jpeg" alt="Client review" class="review-img">
+          <!-- Duplicate for seamless loop -->
+          <img src="review-9.jpeg" alt="Client review" class="review-img">
+          <img src="review-10.jpeg" alt="Client review" class="review-img">
+          <img src="review-11.jpeg" alt="Client review" class="review-img">
+          <img src="review-12.jpeg" alt="Client review" class="review-img">
+          <img src="review-13.jpeg" alt="Client review" class="review-img">
+          <img src="review-14.jpeg" alt="Client review" class="review-img">
+          <img src="review-15.jpeg" alt="Client review" class="review-img">
         </div>
-        <div class="tcard reveal">
-          <span class="tstars">★★★★★</span>
-          <p class="ttext">"Surabhi said my number was fine and explained why. That honest answer when she could have
-            just sold me a correction — that's when I knew she's the real deal. Coming back for my full name analysis
-            next."</p>
-          <div class="tauthor">
-            <div class="tav" style="background:linear-gradient(135deg,#10b981,#059669)">AK</div>
-            <div><span class="tname">Anita K.</span><span class="tloc">Mumbai, Maharashtra</span></div>
-          </div>
-        </div>
+      </div>
+
+      <!-- CTA below reviews -->
+      <div style="text-align:center;margin-top:48px;" class="reveal">
+        <p style="font-size:.95rem;color:var(--g400);margin-bottom:20px;">Join 12,341+ people who already know what
+          their number means.</p>
+        <a href="#pricing" class="btn-pri" style="display:inline-flex;">
+          Get My Report — ₹799
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
       </div>
     </div>
   </section>
+
+  <style>
+    .reviews-track-wrap {
+      position: relative;
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+
+    .reviews-track {
+      display: flex;
+      gap: 14px;
+      width: max-content;
+      animation: scrollLTR 40s linear infinite;
+    }
+
+    .reviews-track-rtl {
+      animation: scrollRTL 40s linear infinite;
+    }
+
+    .reviews-track:hover,
+    .reviews-track-rtl:hover {
+      animation-play-state: paused;
+    }
+
+    .review-img {
+      height: 220px;
+      width: auto;
+      border-radius: 16px;
+      border: 1px solid rgba(212, 175, 55, .2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .4);
+      object-fit: cover;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: transform .2s, border-color .2s;
+    }
+
+    .review-img:hover {
+      transform: scale(1.04);
+      border-color: rgba(212, 175, 55, .5);
+    }
+
+    @keyframes scrollLTR {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    @keyframes scrollRTL {
+      0% {
+        transform: translateX(-50%);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    @media(max-width:600px) {
+      .review-img {
+        height: 160px;
+      }
+    }
+
+    /* Lightbox */
+    #review-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .88);
+      z-index: 9998;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+      padding: 20px;
+    }
+
+    #review-lightbox.show {
+      display: flex;
+    }
+
+    #review-lightbox img {
+      max-height: 90vh;
+      max-width: 90vw;
+      border-radius: 16px;
+      box-shadow: 0 0 60px rgba(212, 175, 55, .2);
+      border: 1px solid rgba(212, 175, 55, .3);
+    }
+
+    #lb-close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 9999;
+      line-height: 1;
+    }
+  </style>
+
+  <!-- Lightbox HTML -->
+  <div id="review-lightbox">
+    <button id="lb-close">×</button>
+    <img id="lb-img" src="" alt="Review">
+  </div>
+
+  <script>
+    // Lightbox for review images
+    document.querySelectorAll('.review-img').forEach(function (img) {
+      img.addEventListener('click', function () {
+        document.getElementById('lb-img').src = this.src;
+        document.getElementById('review-lightbox').classList.add('show');
+      });
+    });
+    document.getElementById('lb-close').addEventListener('click', function () {
+      document.getElementById('review-lightbox').classList.remove('show');
+    });
+    document.getElementById('review-lightbox').addEventListener('click', function (e) {
+      if (e.target === this) this.classList.remove('show');
+    });
+  </script>
 
   <!-- BENEFITS -->
   <section id="benefits">
