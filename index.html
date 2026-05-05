@@ -1413,16 +1413,16 @@
         grid-template-columns: 1fr
       }
 
-      /* Show hero photo on mobile as a full-width card above the text */
+      /* Show hero photo on mobile BELOW the text (at end of hero section) */
       .hero-visual {
         display: block !important;
         max-width: 300px;
-        margin: 0 auto 32px
+        margin: 32px auto 0
       }
 
       .hero-grid {
         display: flex !important;
-        flex-direction: column-reverse
+        flex-direction: column
       }
 
       /* Reduce floating cards on mobile so they don't overflow */
