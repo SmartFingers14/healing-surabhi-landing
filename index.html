@@ -2127,6 +2127,42 @@
       inView(cEl, () => animCounter(cEl, +cEl.dataset.count, cEl.dataset.suffix || ''), { margin: '-40px' });
     }
 
+    // DYNAMIC REPORT COUNT — grows by 5 per day from base of 12,341 on May 5, 2026
+    (function () {
+      const BASE_COUNT = 12341;
+      const BASE_DATE = new Date('2026-05-05T00:00:00+05:30');
+      const DAILY_GROWTH = 5;
+      const today = new Date();
+      const daysDiff = Math.floor((today - BASE_DATE) / (1000 * 60 * 60 * 24));
+      const currentCount = BASE_COUNT + Math.max(0, daysDiff) * DAILY_GROWTH;
+      const formatted = currentCount.toLocaleString('en-IN') + '+';
+
+      // Update all static instances of the count in the page
+      document.querySelectorAll('[data-count]').forEach(el => {
+        el.dataset.count = currentCount;
+      });
+
+      // Update all text nodes that contain the hardcoded number
+      document.querySelectorAll('.hero-badge, .section-header p, .pain-footer, .fcta-group p, .asubt, .about-content p, footer p').forEach(el => {
+        el.innerHTML = el.innerHTML.replace(/12,341\+/g, formatted);
+      });
+
+      // Also update the stats section text
+      document.querySelectorAll('.sl, .ptitle, .ttext, .hcard-info p').forEach(el => {
+        el.innerHTML = el.innerHTML.replace(/12,341\+/g, formatted);
+      });
+
+      // Update h2 headings
+      document.querySelectorAll('h2, h3').forEach(el => {
+        el.innerHTML = el.innerHTML.replace(/12,341\+/g, formatted);
+      });
+
+      // Update floating cards
+      document.querySelectorAll('.fcv').forEach(el => {
+        if (el.textContent.includes('12,341')) el.textContent = formatted;
+      });
+    })();
+
     // SESSION COUNTDOWN TIMER
     const KEY = 'hbs_end', DUR = 15 * 60 * 1000;
     let end = +sessionStorage.getItem(KEY);
