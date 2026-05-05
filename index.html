@@ -1413,8 +1413,32 @@
         grid-template-columns: 1fr
       }
 
+      /* Show hero photo on mobile as a full-width card above the text */
       .hero-visual {
-        display: none
+        display: block !important;
+        max-width: 300px;
+        margin: 0 auto 32px
+      }
+
+      .hero-grid {
+        display: flex !important;
+        flex-direction: column-reverse
+      }
+
+      /* Reduce floating cards on mobile so they don't overflow */
+      .fcrd-l {
+        left: -10px;
+        top: 20%
+      }
+
+      .fcrd-r {
+        right: -10px;
+        top: 65%
+      }
+
+      /* About photo needs explicit height on mobile */
+      .apframe {
+        min-height: 320px
       }
 
       .stats-grid {
