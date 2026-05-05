@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Healing by Surabhi</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --navy: #0A0F1E;
+            --navy2: #0D1628;
+            --navycard: #141E35;
+            --gold: #D4AF37;
+            --goldl: #F0D060;
+            --white: #FFFFFF;
+            --g400: #94A3B8;
+            --g600: #64748B;
+            --green: #25D366;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.7;
+        }
+
+        header {
+            background: rgba(10, 15, 30, .95);
+            border-bottom: 1px solid rgba(212, 175, 55, .12);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+        }
+
+        header .inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .back-btn {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: .85rem;
+            font-weight: 600;
+        }
+
+        .back-btn:hover {
+            color: var(--goldl);
+        }
+
+        main {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
+        }
+
+        .page-label {
+            display: inline-block;
+            background: rgba(212, 175, 55, .08);
+            border: 1px solid rgba(212, 175, 55, .25);
+            color: var(--gold);
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--g400);
+            margin-bottom: 48px;
+            line-height: 1.7;
+        }
+
+        p {
+            font-size: .95rem;
+            color: var(--g400);
+            margin-bottom: 16px;
+        }
+
+        a {
+            color: var(--gold);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(20, 30, 53, .97), rgba(13, 22, 40, .97));
+            border: 1px solid rgba(212, 175, 55, .15);
+            border-radius: 20px;
+            padding: 32px 28px;
+            transition: border-color .2s, transform .2s;
+        }
+
+        .contact-card:hover {
+            border-color: rgba(212, 175, 55, .35);
+            transform: translateY(-3px);
+        }
+
+        .card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .card-icon.wa {
+            background: rgba(37, 211, 102, .12);
+            border: 1.5px solid rgba(37, 211, 102, .3);
+        }
+
+        .card-icon.web {
+            background: rgba(212, 175, 55, .1);
+            border: 1.5px solid rgba(212, 175, 55, .25);
+        }
+
+        .contact-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--white);
+        }
+
+        .contact-card p {
+            font-size: .88rem;
+            color: var(--g400);
+            margin-bottom: 18px;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: .88rem;
+            padding: 11px 22px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: all .2s;
+        }
+
+        .contact-btn.wa-btn {
+            background: #25D366;
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, .3);
+        }
+
+        .contact-btn.wa-btn:hover {
+            background: #1ebe5d;
+            transform: translateY(-1px);
+        }
+
+        .contact-btn.web-btn {
+            background: var(--gold);
+            color: #000;
+            box-shadow: 0 4px 16px rgba(212, 175, 55, .3);
+        }
+
+        .contact-btn.web-btn:hover {
+            background: var(--goldl);
+            transform: translateY(-1px);
+        }
+
+        .info-box {
+            background: rgba(212, 175, 55, .05);
+            border: 1px solid rgba(212, 175, 55, .15);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 32px;
+        }
+
+        .info-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--white);
+            min-width: 100px;
+            flex-shrink: 0;
+        }
+
+        .info-val {
+            font-size: .88rem;
+            color: var(--g400);
+        }
+
+        .divider {
+            height: 1px;
+            background: rgba(212, 175, 55, .12);
+            margin: 40px 0;
+        }
+
+        footer {
+            background: var(--navy);
+            border-top: 1px solid rgba(212, 175, 55, .1);
+            padding: 28px 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: .8rem;
+            color: var(--g600);
+            margin-bottom: 6px;
+        }
+
+        footer a {
+            color: var(--g400);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--gold);
+        }
+
+        @media(max-width:600px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="inner">
+            <a href="index.html" class="logo">Healing by <span>Surabhi</span></a>
+            <a href="index.html" class="back-btn">← Back to Home</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-label">Get in Touch</div>
+        <h1>Contact Us</h1>
+        <p class="subtitle">Have a question about your report, or need help with your order? Ms. Surabhi personally
+            responds to every message. The fastest way to reach her is on WhatsApp.</p>
+
+        <div class="contact-grid">
+            <!-- WhatsApp Card -->
+            <div class="contact-card">
+                <div class="card-icon wa">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="#25D366">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
+                    </svg>
+                </div>
+                <h2>WhatsApp</h2>
+                <p>The fastest way to reach Surabhi. She personally reads and responds to every message — usually within
+                    a few hours.</p>
+                <a href="https://wa.me/918860739675?text=Hi%20Surabhi%2C%20I%20have%20a%20question." target="_blank"
+                    class="contact-btn wa-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
+                    </svg>
+                    Chat on WhatsApp
+                </a>
+            </div>
+
+            <!-- Website / Report Card -->
+            <div class="contact-card">
+                <div class="card-icon web">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="2" y1="12" x2="22" y2="12" />
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                    </svg>
+                </div>
+                <h2>Get Your Report</h2>
+                <p>Ready to find out what your mobile number says about you? Order your personalized numerology report
+                    for just ₹799.</p>
+                <a href="index.html#pricing" class="contact-btn web-btn">
+                    Get My Report — ₹799
+                </a>
+            </div>
+        </div>
+
+        <!-- Contact Details -->
+        <div class="info-box">
+            <h3>Contact Details</h3>
+            <div class="info-row">
+                <span class="info-label">Name</span>
+                <span class="info-val">Ms. Surabhi Kapsime</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Profession</span>
+                <span class="info-val">Certified Numerologist · 7+ Years Experience</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">WhatsApp</span>
+                <span class="info-val"><a href="https://wa.me/918860739675">+91 88607 39675</a></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Website</span>
+                <span class="info-val"><a
+                        href="https://number.healingbysurabhi.in">number.healingbysurabhi.in</a></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Response Time</span>
+                <span class="info-val">Usually within a few hours on WhatsApp</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Report Delivery</span>
+                <span class="info-val">Within 24 hours of purchase, via WhatsApp</span>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+        <p style="font-size:.85rem;">For order-related queries, please have your name and the mobile number you ordered
+            for ready when you reach out.</p>
+    </main>
+
+    <footer>
+        <p>© 2026 Healing by Surabhi. All rights reserved.</p>
+        <p><a href="privacy-policy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="refund-policy.html">Refund Policy</a>
+            &nbsp;·&nbsp; <a href="contact.html">Contact</a></p>
+    </footer>
+</body>
+
+</html>
