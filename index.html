@@ -2033,9 +2033,11 @@
         <div class="pbadge">Limited Time Price</div>
         <p class="ptitle">Mobile Number Numerology Report</p>
         <div class="timer-wrap">
-          <span class="timer-label">This offer expires in</span>
+          <span class="timer-label">Today's offer expires in</span>
           <div class="tblocks">
-            <div class="tblock"><span class="tnum" id="t-min">15</span><span class="tunit">Min</span></div>
+            <div class="tblock"><span class="tnum" id="t-hr">00</span><span class="tunit">Hrs</span></div>
+            <div class="tcolon">:</div>
+            <div class="tblock"><span class="tnum" id="t-min">00</span><span class="tunit">Min</span></div>
             <div class="tcolon">:</div>
             <div class="tblock"><span class="tnum" id="t-sec">00</span><span class="tunit">Sec</span></div>
           </div>
@@ -2619,19 +2621,27 @@
       });
     })();
 
-    // SESSION COUNTDOWN TIMER
-    const KEY = 'hbs_end', DUR = 15 * 60 * 1000;
-    let end = +sessionStorage.getItem(KEY);
-    if (!end || Date.now() > end) { end = Date.now() + DUR; sessionStorage.setItem(KEY, end); }
-    function tick() {
-      const rem = Math.max(0, end - Date.now());
-      const m = Math.floor(rem / 60000), s = Math.floor((rem % 60000) / 1000);
-      const me = document.getElementById('t-min'), se = document.getElementById('t-sec');
+    // DAILY COUNTDOWN TIMER — counts down to midnight IST, resets every day
+    function tickDaily() {
+      const now = new Date();
+      // Midnight IST = UTC+5:30
+      const istOffset = 5.5 * 60 * 60 * 1000;
+      const nowIST = new Date(now.getTime() + istOffset);
+      const midnight = new Date(nowIST);
+      midnight.setUTCHours(24, 0, 0, 0); // next midnight UTC (= midnight IST since we shifted)
+      const rem = Math.max(0, midnight - nowIST);
+      const h = Math.floor(rem / 3600000);
+      const m = Math.floor((rem % 3600000) / 60000);
+      const s = Math.floor((rem % 60000) / 1000);
+      const he = document.getElementById('t-hr');
+      const me = document.getElementById('t-min');
+      const se = document.getElementById('t-sec');
+      if (he) he.textContent = String(h).padStart(2, '0');
       if (me) me.textContent = String(m).padStart(2, '0');
       if (se) se.textContent = String(s).padStart(2, '0');
-      if (rem > 0) setTimeout(tick, 1000);
+      setTimeout(tickDaily, 1000);
     }
-    tick();
+    tickDaily();
 
     // FAQ ACCORDION
     document.querySelectorAll('.faq-q').forEach(q => {
